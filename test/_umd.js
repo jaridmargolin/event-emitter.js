@@ -1,5 +1,5 @@
 /*!
- * test/_dist-amd.js
+ * test/_umd.js
  * 
  * Copyright (c) 2014
  */
@@ -15,7 +15,7 @@ define([
 // Test
 // ----------------------------------------------------------------------------
 
-describe('amd - emitter.js', function () {
+describe('umd - emitter.js', function () {
 
   it('Should create a new instance.', function () {
     var emitter = new Emitter();

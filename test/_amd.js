@@ -1,5 +1,5 @@
 /*!
- * test/_dist-umd.js
+ * test/_amd.js
  * 
  * Copyright (c) 2014
  */
@@ -7,7 +7,7 @@
 define([
   'proclaim',
   'sinon',
-  'emitter'
+  'emitter/emitter'
 ], function (assert, sinon, Emitter) {
 
 
@@ -15,7 +15,7 @@ define([
 // Test
 // ----------------------------------------------------------------------------
 
-describe('umd - emitter.js', function () {
+describe('amd - emitter.js', function () {
 
   it('Should create a new instance.', function () {
     var emitter = new Emitter();

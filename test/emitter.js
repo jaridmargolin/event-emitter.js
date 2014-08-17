@@ -7,7 +7,7 @@
 define([
   'proclaim',
   'sinon',
-  'emitter/emitter'
+  'emitter'
 ], function (assert, sinon, Emitter) {
 
 
