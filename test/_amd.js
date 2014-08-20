@@ -7,19 +7,19 @@
 define([
   'proclaim',
   'sinon',
-  'emitter/emitter'
-], function (assert, sinon, Emitter) {
+  'event-emitter/event-emitter'
+], function (assert, sinon, EventEmitter) {
 
 
 /* -----------------------------------------------------------------------------
  * test
  * ---------------------------------------------------------------------------*/
 
-describe('amd - emitter.js', function () {
+describe('amd - event-emitter.js', function () {
 
   it('Should create a new instance.', function () {
-    var emitter = new Emitter();
-    assert.isInstanceOf(emitter, Emitter);
+    var emitter = new EventEmitter();
+    assert.isInstanceOf(emitter, EventEmitter);
   });
 
 });

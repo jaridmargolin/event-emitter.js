@@ -1,4 +1,4 @@
-emitter.js [![Build Status](https://travis-ci.org/jaridmargolin/emitter.js.png)](https://travis-ci.org/jaridmargolin/emitter.js)
+event-emitter.js [![Build Status](https://travis-ci.org/jaridmargolin/event-emitter.js.png)](https://travis-ci.org/jaridmargolin/event-emitter.js)
 ========================
 
 Lightweight EventEmitter Class.

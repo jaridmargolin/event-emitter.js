@@ -1,4 +1,4 @@
 {
-  "fileName": "emitter",
-  "globalAlias": "Emitter"
+  "fileName": "event-emitter",
+  "globalAlias": "EventEmitter"
 }

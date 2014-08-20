@@ -10,34 +10,34 @@
     // like Node.
     module.exports = factory();
   } else {
-    root['Emitter'] = factory();
+    root['EventEmitter'] = factory();
   }
 }(this, function () {
 
 /*!
- * emitter.js
+ * event-emitter.js
  * 
  * Copyright (c) 2014
  */
-var emitter;
-emitter = function () {
+var eventEmitter;
+eventEmitter = function () {
   /* -----------------------------------------------------------------------------
    * scope
    * ---------------------------------------------------------------------------*/
   var root = this;
   /* -----------------------------------------------------------------------------
-   * Emitter
+   * EventEmitter
    * ---------------------------------------------------------------------------*/
   /**
    * Lightweight EventEmitter Class.
    *
    * @example
-   * var emitter = new Emitter(settings);
+   * var emitter = new EventEmitter(settings);
    *
    * @public
    * @constructor
    */
-  var Emitter = function () {
+  var EventEmitter = function () {
     this.events = {};
   };
   /**
@@ -54,7 +54,7 @@ emitter = function () {
    *
    * @returns emitter instance (allows chaining).
    */
-  Emitter.prototype.on = function (name, handler, context) {
+  EventEmitter.prototype.on = function (name, handler, context) {
     (this.events[name] = this.events[name] || []).unshift({
       fn: handler,
       context: context || root
@@ -79,7 +79,7 @@ emitter = function () {
    *
    * @returns emitter instance (allows chaining).
    */
-  Emitter.prototype.off = function (name, handler) {
+  EventEmitter.prototype.off = function (name, handler) {
     // Remove all events
     if (!name) {
       this.events = {};
@@ -107,7 +107,7 @@ emitter = function () {
    *
    * @returns emitter instance (allows chaining).
    */
-  Emitter.prototype.trigger = function (name) {
+  EventEmitter.prototype.trigger = function (name) {
     var args = Array.prototype.slice.call(arguments, 1);
     this._loopSubscribers(name, function (subscribers, i) {
       var handler = subscribers[i];
@@ -124,7 +124,7 @@ emitter = function () {
    * @param {string} name - Name of event to remove listener from.
    * @param {function} fn - Name of event to remove listener from.
    */
-  Emitter.prototype._loopSubscribers = function (name, fn) {
+  EventEmitter.prototype._loopSubscribers = function (name, fn) {
     var subscribers = this.events[name] || [], l = subscribers.length;
     while (l--) {
       fn(subscribers, l);
@@ -133,10 +133,10 @@ emitter = function () {
   /* -----------------------------------------------------------------------------
    * export
    * ---------------------------------------------------------------------------*/
-  return Emitter;
+  return EventEmitter;
 }();
 
-return emitter;
+return eventEmitter;
 
 
 }));

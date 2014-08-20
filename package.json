@@ -1,22 +1,22 @@
 {
-  "name": "emitter.js",
+  "name": "event-emitter.js",
   "description": "Lightweight EventEmitter Class.",
   "author": "Jarid Margolin <jaridmargolin@gmail.com>",
-  "version": "0.1.2",
-  "homepage": "https://github.com/jaridmargolin/emitter.js",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jaridmargolin/event-emitter.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaridmargolin/emitter.js"
+    "url": "https://github.com/jaridmargolin/event-emitter.js"
   },
   "bugs": {
-    "url": "https://github.com/jaridmargolin/emitter.js/issues"
+    "url": "https://github.com/jaridmargolin/event-emitter.js/issues"
   },
   "scripts": {
     "test": "grunt test"
   },
-  "main": "dist/common/emitter.js",
+  "main": "dist/common/event-emitter.js",
   "devDependencies": {
-    "easy-build": "~0.0.1",
+    "easy-build": "~0.0.3",
     "proclaim": "~2.0.0",
     "sinon": "~1.10.1"
   },

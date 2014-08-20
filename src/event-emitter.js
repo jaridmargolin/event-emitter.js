@@ -1,5 +1,5 @@
 /*!
- * emitter.js
+ * event-emitter.js
  * 
  * Copyright (c) 2014
  */
@@ -16,19 +16,19 @@ var root = this;
 
 
 /* -----------------------------------------------------------------------------
- * Emitter
+ * EventEmitter
  * ---------------------------------------------------------------------------*/
 
 /**
  * Lightweight EventEmitter Class.
  *
  * @example
- * var emitter = new Emitter(settings);
+ * var emitter = new EventEmitter(settings);
  *
  * @public
  * @constructor
  */
-var Emitter = function () {
+var EventEmitter = function () {
   this.events = {};
 };
 
@@ -47,7 +47,7 @@ var Emitter = function () {
  *
  * @returns emitter instance (allows chaining).
  */
-Emitter.prototype.on = function (name, handler, context) {
+EventEmitter.prototype.on = function (name, handler, context) {
   (this.events[name] = this.events[name] || []).unshift({
     fn: handler,
     context: context || root
@@ -75,7 +75,7 @@ Emitter.prototype.on = function (name, handler, context) {
  *
  * @returns emitter instance (allows chaining).
  */
-Emitter.prototype.off = function (name, handler) {
+EventEmitter.prototype.off = function (name, handler) {
   // Remove all events
   if (!name) {
     this.events = {};
@@ -110,7 +110,7 @@ Emitter.prototype.off = function (name, handler) {
  *
  * @returns emitter instance (allows chaining).
  */
-Emitter.prototype.trigger = function (name) {
+EventEmitter.prototype.trigger = function (name) {
   var args = Array.prototype.slice.call(arguments, 1);
 
   this._loopSubscribers(name, function (subscribers, i) {
@@ -131,7 +131,7 @@ Emitter.prototype.trigger = function (name) {
  * @param {string} name - Name of event to remove listener from.
  * @param {function} fn - Name of event to remove listener from.
  */
-Emitter.prototype._loopSubscribers = function (name, fn) {
+EventEmitter.prototype._loopSubscribers = function (name, fn) {
   var subscribers = this.events[name] || [],
       l = subscribers.length;
 
@@ -145,7 +145,7 @@ Emitter.prototype._loopSubscribers = function (name, fn) {
  * export
  * ---------------------------------------------------------------------------*/
 
-return Emitter;
+return EventEmitter;
 
 
 });

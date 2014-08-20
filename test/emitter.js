@@ -1,5 +1,5 @@
 /*!
- * test/emitter.js
+ * test/event-emitter.js
  * 
  * Copyright (c) 2014
  */
@@ -7,8 +7,8 @@
 define([
   'proclaim',
   'sinon',
-  'emitter'
-], function (assert, sinon, Emitter) {
+  'event-emitter'
+], function (assert, sinon, EventEmitter) {
 
 
 /* -----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ var context1 = { name: 1 },
  * test
  * ---------------------------------------------------------------------------*/
 
-describe('emitter.js', function () {
+describe('event-emitter.js', function () {
 
   /* ---------------------------------------------------------------------------
    * constructor
@@ -35,7 +35,7 @@ describe('emitter.js', function () {
   describe('constructor', function () {
 
     it('Should add empty events store to instance.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       assert.deepEqual(emitter.events, {});
     });
 
@@ -49,14 +49,14 @@ describe('emitter.js', function () {
   describe('on', function () {
 
     it('Should create an entry in events store with event name as key.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler1);
 
       assert.ok(emitter.events['test']);
     });
 
     it('Should add event handler object to begining of the event subscriber array.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler1, context1);
       emitter.on('test', handler2, context2);
 
@@ -80,7 +80,7 @@ describe('emitter.js', function () {
   describe('off', function () {
 
     it('Should remove all events if no name is passed.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler1, context1);
       emitter.on('test2', handler1, context1);
       emitter.off();
@@ -90,7 +90,7 @@ describe('emitter.js', function () {
     });
 
     it('Should remove all event handlers if no handler is passed.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler1, context1);
       emitter.on('test', handler2, context2);
       emitter.on('test2', handler2, context2);
@@ -101,7 +101,7 @@ describe('emitter.js', function () {
     });
 
     it('Should remove specific handler.', function () {
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler1, context1);
       emitter.on('test', handler2, context2);
       emitter.off('test', handler1);
@@ -125,7 +125,7 @@ describe('emitter.js', function () {
       var spy1 = sinon.spy(),
           spy2 = sinon.spy();
 
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', spy1);
       emitter.on('test', spy2);
       emitter.trigger('test');
@@ -140,7 +140,7 @@ describe('emitter.js', function () {
         assert.equal(this, context);
       };
 
-      var emitter = new Emitter();
+      var emitter = new EventEmitter();
       emitter.on('test', handler, context);
       emitter.trigger('test');
     });
