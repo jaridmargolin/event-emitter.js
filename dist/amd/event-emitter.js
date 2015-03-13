@@ -75,7 +75,7 @@ EventEmitter.prototype.on = function (name, handler, context) {
  *
  * @returns emitter instance (allows chaining).
  */
-EventEmitter.prototype.off = function (name, handler, context) {
+EventEmitter.prototype.off = function (name, handler) {
   // Remove all events
   if (!name) {
     this.events = {};
