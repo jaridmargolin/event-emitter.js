@@ -87,7 +87,7 @@ EventEmitter.prototype.off = function (name, handler) {
   // Remove specific handler for event
   } else {
     this._loopSubscribers(name, function (subscribers, i) {
-      if (subscribers[i] === handler)  {
+      if (subscribers[i].fn === handler)  {
         subscribers.splice(i, 1);
       }
     });

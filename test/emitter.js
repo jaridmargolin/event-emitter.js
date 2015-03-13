@@ -110,6 +110,8 @@ describe('event-emitter.js', function () {
         fn: handler2,
         context: context2
       });
+
+      assert.equal(emitter.events['test'].length, 1);
     });
 
   });

@@ -79,7 +79,7 @@ eventEmitter = function () {
    *
    * @returns emitter instance (allows chaining).
    */
-  EventEmitter.prototype.off = function (name, handler) {
+  EventEmitter.prototype.off = function (name, handler, context) {
     // Remove all events
     if (!name) {
       this.events = {};
@@ -87,7 +87,7 @@ eventEmitter = function () {
       delete this.events[name];
     } else {
       this._loopSubscribers(name, function (subscribers, i) {
-        if (subscribers[i] === handler) {
+        if (subscribers[i].fn === handler) {
           subscribers.splice(i, 1);
         }
       });
