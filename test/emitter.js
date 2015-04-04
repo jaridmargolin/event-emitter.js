@@ -146,6 +146,28 @@ describe('event-emitter.js', function () {
       emitter.on('test', handler, context);
       emitter.trigger('test');
     });
+
+    it('Should not throw error if all listeners are removed while looping.', function () {
+      var emitter = new EventEmitter();
+
+      emitter.on('test', function () { emitter.off('test'); });
+      emitter.on('test', function () {});
+      emitter.trigger('test');
+    });
+
+    it('Should execute listeners removed during loop.', function () {
+      var emitter = new EventEmitter();
+      var handler1 = sinon.spy(function () { emitter.off('test', handler2); });
+      var handler2 = sinon.spy(function () {});
+
+      emitter.on('test', handler1);
+      emitter.on('test', handler2);
+      emitter.trigger('test');
+
+      assert.isTrue(handler1.calledOnce);
+      assert.isTrue(handler2.calledOnce);
+    });
+
   });
 
 
